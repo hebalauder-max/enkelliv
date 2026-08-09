@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENK — et enkelt liv</title>
+    <meta name="description" content="De kaller det en hage. Det er en dyrepark. ENK viser veien ut.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ENK — et enkelt liv">
+    <meta property="og:description" content="De kaller det en hage. Det er en dyrepark.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://enkelliv.no">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>◉</text></svg>">
+
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --surface: #141414;
+            --text: #e0ddd6;
+            --muted: #7a766a;
+            --accent: #5a7a4a;
+            --accent-glow: #6b8f56;
+            --border: #2a2822;
+            --radius: 10px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1.5rem 5rem;
+        }
+
+        .container {
+            max-width: 640px;
+            width: 100%;
+        }
+
+        /* ── HEADER ── */
+        header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .wordmark {
+            font-size: 1.1rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+            margin-bottom: 0.3rem;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* ── ZOO SECTION ── */
+        .zoo-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .zoo-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .zoo-quote {
+            font-size: 1.35rem;
+            line-height: 1.55;
+            color: var(--text);
+        }
+
+        .zoo-quote em {
+            font-style: italic;
+            color: #c4b998;
+        }
+
+        .zoo-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--border);
+            margin: 2rem 0;
+        }
+
+        .zoo-footnote {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ── PRODUCT CARDS ── */
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(90, 122, 74, 0.08);
+        }
+
+        .card-status {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 0.6rem;
+        }
+
+        .card-status.live {
+            color: var(--accent-glow);
+        }
+        .card-status.coming {
+            color: var(--muted);
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .card-arrow {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+        }
+
+        .card:hover .card-arrow {
+            color: var(--accent-glow);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer p + p {
+            margin-top: 0.3rem;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 480px) {
+            body { padding: 2rem 1rem 3rem; }
+            .zoo-block { padding: 1.8rem 1.3rem; }
+            .zoo-quote { font-size: 1.15rem; }
+            .card { padding: 1.5rem 1.3rem; }
+            .card h2 { font-size: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="wordmark">ENK</div>
+            <div class="tagline">et enkelt liv</div>
+        </header>
+
+        <!-- ZOO -->
+        <div class="zoo-block">
+            <div class="zoo-label">Om virkeligheten</div>
+            <div class="zoo-quote">
+                Du tror du lever i komfort, og det er sant.<br>
+                Du får alt du trenger.<br>
+                De kaller det en <em>hage</em>.<br>
+                Det er en <em>dyrepark.</em>
+            </div>
+            <div class="zoo-divider"></div>
+            <div class="zoo-footnote">
+                Zoo er aktivt designet for at du skal trives i fangenskap.
+                Maten serveres. Sikkerheten er garantert. Friheten er innbilt.
+                De fleste vet ikke at jungelen finnes.
+            </div>
+        </div>
+
+        <!-- PRODUCTS -->
+        <div class="cards">
+
+            <!-- Våknopp -->
+            <a href="https://vaaknopp.enkelliv.no" class="card">
+                <div class="card-status live">● Live</div>
+                <h2>Våknopp</h2>
+                <p>12 spørsmål. 5 arketyper. Hvilken del av deg sover?</p>
+                <span class="card-arrow">Ta testen →</span>
+            </a>
+
+            <!-- Matrix-test -->
+            <div class="card">
+                <div class="card-status coming">○ Kommer</div>
+                <h2>Matrix-test</h2>
+                <p>Poeng. Prosent. Profil. Hvor fast sitter du i zoo — og hvor nær er du jungelen?</p>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>ENK — et enkelt liv</p>
+            <p>Norge, 2026</p>
+        </footer>
+
+    </div>
+</body>
+</html>

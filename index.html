@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ENK — et enkelt liv</title>
-    <meta name="description" content="De kaller det en hage. Det er en dyrepark. ENK viser veien ut.">
+    <meta name="description" content="De kaller det en hage. Det er en dyrepark. Ta testen og se hvor du står.">
 
     <!-- Open Graph -->
     <meta property="og:title" content="ENK — et enkelt liv">
-    <meta property="og:description" content="De kaller det en hage. Det er en dyrepark.">
+    <meta property="og:description" content="De kaller det en hage. Det er en dyrepark. Ta testen.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://enkelliv.no">
 
@@ -17,79 +17,88 @@
 
     <style>
         :root {
-            --bg: #0d0d0d;
-            --surface: #141414;
+            --bg: #0a0a0a;
+            --surface: #141210;
             --text: #e0ddd6;
-            --muted: #7a766a;
+            --muted: #6b6660;
             --accent: #5a7a4a;
             --accent-glow: #6b8f56;
-            --border: #2a2822;
-            --radius: 10px;
+            --red: #c0392b;
+            --gold: #c9a84c;
+            --border: #2a2520;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
+        html, body {
+            width: 100%;
+            min-height: 100vh;
             background: var(--bg);
             color: var(--text);
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             line-height: 1.7;
-            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            padding: 3rem 1.5rem 5rem;
+            justify-content: center;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 640px;
             width: 100%;
+            max-width: 560px;
+            padding: 3rem 1.5rem 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
         }
 
         /* ── HEADER ── */
-        header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
         .wordmark {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             letter-spacing: 0.35em;
             text-transform: uppercase;
             color: var(--accent);
             font-family: 'Courier New', monospace;
+            text-align: center;
             margin-bottom: 0.3rem;
         }
 
-        .tagline {
-            font-size: 0.85rem;
-            color: var(--muted);
-            font-style: italic;
+        .wordmark .symbol {
+            color: var(--gold);
         }
 
-        /* ── ZOO SECTION ── */
+        .tagline {
+            font-size: 0.8rem;
+            color: var(--muted);
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* ── ZOO BLOCK ── */
         .zoo-block {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 2.5rem 2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
+            border-radius: 3px;
+            padding: 2.2rem 1.8rem;
+            width: 100%;
+            max-width: 480px;
         }
 
         .zoo-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--muted);
             margin-bottom: 1.5rem;
             font-family: 'Courier New', monospace;
+            text-align: center;
         }
 
         .zoo-quote {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             line-height: 1.55;
-            color: var(--text);
+            text-align: center;
         }
 
         .zoo-quote em {
@@ -101,153 +110,221 @@
             width: 40px;
             height: 1px;
             background: var(--border);
-            margin: 2rem 0;
+            margin: 2rem auto;
         }
 
         .zoo-footnote {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--muted);
+            text-align: center;
             line-height: 1.6;
         }
 
         /* ── PRODUCT CARDS ── */
         .cards {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            margin-bottom: 3rem;
+            width: 100%;
+            max-width: 480px;
         }
 
         .card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 2rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            cursor: pointer;
+            border-radius: 3px;
+            padding: 1.3rem 1rem;
+            text-align: center;
         }
 
-        .card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(90, 122, 74, 0.08);
+        .card.vaknopp { border-color: rgba(201,168,76,0.35); }
+        .card.matrise { border-color: rgba(192,57,43,0.35); }
+
+        .card h3 {
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+            letter-spacing: 1px;
         }
 
-        .card-status {
-            font-size: 0.65rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            font-family: 'Courier New', monospace;
+        .card.vaknopp h3 { color: var(--gold); }
+        .card.matrise h3 { color: var(--red); }
+
+        .card .subtitle {
+            font-size: 0.7rem;
+            color: var(--muted);
+            font-style: italic;
             margin-bottom: 0.6rem;
+            line-height: 1.4;
         }
 
-        .card-status.live {
-            color: var(--accent-glow);
-        }
-        .card-status.coming {
+        .card ul {
+            list-style: none;
+            text-align: left;
+            font-size: 0.68rem;
             color: var(--muted);
+            line-height: 1.8;
         }
 
-        .card h2 {
-            font-size: 1.4rem;
-            font-weight: normal;
-            margin-bottom: 0.5rem;
-            color: var(--text);
+        .card ul li::before {
+            content: "\2014 ";
+            opacity: 0.4;
         }
 
-        .card p {
-            font-size: 0.9rem;
+        .arrow-down {
+            font-size: 1.2rem;
             color: var(--muted);
-            line-height: 1.55;
+            margin-top: -0.5rem;
         }
 
-        .card-arrow {
+        .result-label {
+            font-size: 0.7rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: -1rem;
+        }
+
+        .result-desc {
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-align: center;
+            max-width: 400px;
+            line-height: 1.6;
+            margin-top: -0.5rem;
+        }
+
+        /* ── CTA ── */
+        .cta-btn {
             display: inline-block;
-            margin-top: 1rem;
-            font-size: 0.8rem;
+            padding: 0.9rem 2.4rem;
+            border: 2px solid var(--accent);
+            background: transparent;
             color: var(--accent);
-            font-family: 'Courier New', monospace;
+            font-family: Georgia, serif;
+            font-size: 1.05rem;
+            cursor: pointer;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
         }
 
-        .card:hover .card-arrow {
-            color: var(--accent-glow);
+        .cta-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .price-note {
+            font-size: 0.7rem;
+            color: var(--muted);
+            text-align: center;
+            margin-top: -1rem;
         }
 
         /* ── FOOTER ── */
         footer {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             color: var(--muted);
-            border-top: 1px solid var(--border);
-            padding-top: 2rem;
-            margin-top: 2rem;
+            line-height: 1.8;
+            margin-top: 1.5rem;
         }
 
-        footer p + p {
-            margin-top: 0.3rem;
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
         }
 
-        /* ── MOBILE ── */
-        @media (max-width: 480px) {
-            body { padding: 2rem 1rem 3rem; }
-            .zoo-block { padding: 1.8rem 1.3rem; }
-            .zoo-quote { font-size: 1.15rem; }
-            .card { padding: 1.5rem 1.3rem; }
-            .card h2 { font-size: 1.25rem; }
+        footer a:hover {
+            border-bottom-color: var(--muted);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 420px) {
+            .cards {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+            }
+
+            .container {
+                padding: 2rem 1rem 4rem;
+                gap: 2rem;
+            }
+
+            .zoo-quote {
+                font-size: 1.1rem;
+            }
+
+            .zoo-block {
+                padding: 1.8rem 1.4rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
 
-        <header>
-            <div class="wordmark">ENK</div>
-            <div class="tagline">et enkelt liv</div>
+        <!-- Header -->
+        <header style="text-align:center;">
+            <div class="wordmark">ENK <span class="symbol">◉</span> et enkelt liv</div>
+            <div class="tagline">Om virkeligheten</div>
         </header>
 
-        <!-- ZOO -->
+        <!-- Zoo Block -->
         <div class="zoo-block">
-            <div class="zoo-label">Om virkeligheten</div>
+            <div class="zoo-label">[ Det du tror, og det som er ]</div>
             <div class="zoo-quote">
-                Du tror du lever i komfort, og det er sant.<br>
-                Du får alt du trenger.<br>
-                De kaller det en <em>hage</em>.<br>
-                Det er en <em>dyrepark.</em>
+                Du tror du lever <em>fritt</em>. Det gjør du ikke. Du lever i en dyrepark — komfortabel, trygg, forutsigbar. Maten serveres. Sikkerheten er garantert. Friheten er innbilt.
             </div>
             <div class="zoo-divider"></div>
             <div class="zoo-footnote">
-                Zoo er aktivt designet for at du skal trives i fangenskap.
-                Maten serveres. Sikkerheten er garantert. Friheten er innbilt.
-                De fleste vet ikke at jungelen finnes.
+                De fleste vet ikke at jungelen finnes.<br>
+                Du vet det. Du har alltid visst det.
             </div>
         </div>
 
-        <!-- PRODUCTS -->
+        <!-- Product Cards -->
         <div class="cards">
-
-            <!-- Våknopp -->
-            <a href="https://vaaknopp.enkelliv.no" class="card">
-                <div class="card-status live">● Live</div>
-                <h2>Våknopp</h2>
-                <p>12 spørsmål. 5 arketyper. Hvilken del av deg sover?</p>
-                <span class="card-arrow">Ta testen →</span>
-            </a>
-
-            <!-- Matrix-test -->
-            <div class="card">
-                <div class="card-status coming">○ Kommer</div>
-                <h2>Matrix-test</h2>
-                <p>Poeng. Prosent. Profil. Hvor fast sitter du i zoo — og hvor nær er du jungelen?</p>
+            <div class="card vaknopp">
+                <h3>Våknopp</h3>
+                <div class="subtitle">Hvem er du — under overflaten?</div>
+                <ul>
+                    <li>12 spørsmål</li>
+                    <li>5 arketyper</li>
+                    <li>Hvilken del av deg sover?</li>
+                </ul>
             </div>
-
+            <div class="card matrise">
+                <h3>Matrise</h3>
+                <div class="subtitle">Hvor står du — i maskineriet?</div>
+                <ul>
+                    <li>12 påstander</li>
+                    <li>4 nivåer</li>
+                    <li>Hvor fast sitter du i zoo?</li>
+                </ul>
+            </div>
         </div>
 
+        <!-- Arrow + Result -->
+        <div class="arrow-down">▼</div>
+        <div class="result-label">Resultat</div>
+        <div class="result-desc">
+            Ett sertifikat. Din arketype + din profil.<br>Spektrumlinje + radar. Last ned. Del.
+        </div>
+
+        <!-- CTA -->
+        <a href="https://matrise.enkelliv.no" class="cta-btn">Start testen</a>
+        <div class="price-note">24 spørsmål · ~10 minutter · Gratis i lanseringsfasen</div>
+
+        <!-- Footer -->
         <footer>
-            <p>ENK — et enkelt liv</p>
-            <p>Org.nr. 938 195 307 &nbsp;|&nbsp; <a href="mailto:hebalauder@gmail.com" style="color: inherit; text-decoration: underline;">hebalauder@gmail.com</a></p>
-            <p>Norge, 2026</p>
+            ENK — et enkelt liv<br>
+            Org.nr. 938 195 307 &nbsp;·&nbsp; <a href="mailto:hebalauder@gmail.com">hebalauder@gmail.com</a><br>
+            Norge, 2026
         </footer>
 
     </div>

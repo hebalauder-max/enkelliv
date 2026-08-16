@@ -216,6 +216,44 @@
             color: var(--bg);
         }
 
+                .forlop-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text);
+            max-width: 440px;
+            line-height: 1.6;
+            margin-top: -0.8rem;
+        }
+        .forlop-note span { color: var(--muted); }
+
+        .notify-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 1.4rem 1.2rem;
+            width: 100%;
+            max-width: 440px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            align-items: center;
+            text-align: center;
+        }
+        .notify-title { font-size: 0.85rem; color: var(--text); line-height: 1.6; }
+        .notify-title small { display: block; color: var(--muted); font-size: 0.72rem; margin-top: 0.3rem; }
+        .notify-form { display: flex; gap: 0.5rem; width: 100%; max-width: 360px; }
+        .notify-form input {
+            flex: 1; background: var(--bg); border: 1px solid var(--border); color: var(--text);
+            padding: 0.6rem 0.8rem; font-family: Georgia, serif; font-size: 0.9rem; border-radius: 3px; min-width: 0;
+        }
+        .notify-form button {
+            border: 1px solid var(--accent); background: transparent; color: var(--accent);
+            font-family: Georgia, serif; font-size: 0.9rem; padding: 0.6rem 1.2rem; cursor: pointer;
+            border-radius: 3px; transition: all 0.3s ease; white-space: nowrap;
+        }
+        .notify-form button:hover { background: var(--accent); color: var(--bg); }
+        .notify-msg { font-size: 0.75rem; color: var(--accent); min-height: 1em; }
+
         .price-note {
             font-size: 0.7rem;
             color: var(--muted);
@@ -290,6 +328,12 @@
         </div>
 
         <!-- Product Cards -->
+                <!-- To tester, ett forløp -->
+        <div class="forlop-note">
+            To tester. Ett forløp.<br>
+            <span>Våknopp ser hvem du er — Matrise ser hvor du står.</span>
+        </div>
+
         <div class="cards">
             <div class="card vaknopp">
                 <h3>Våknopp</h3>
@@ -315,12 +359,24 @@
         <div class="arrow-down">▼</div>
         <div class="result-label">Resultat</div>
         <div class="result-desc">
-            Ett sertifikat. Din arketype + din profil.<br>Spektrumlinje + radar. Last ned. Del.
+            Resultatet er ett sertifikat — din arketype + din profil, som spektrum og radar.
         </div>
 
         <!-- CTA -->
         <a href="https://matrise.enkelliv.no?start=1" class="cta-btn">Start testen</a>
         <div class="price-note">24 spørsmål · ~10 minutter · Gratis i lanseringsfasen</div>
+        <!-- Varsling: flere tester -->
+        <div class="notify-box">
+            <div class="notify-title">
+                Flere tester er på vei.
+                <small>Legg igjen e-posten din, så sier vi fra når en ny test slippes. Ingen nyhetsbrev — kun én melding.</small>
+            </div>
+            <form class="notify-form" id="notify-form">
+                <input type="email" id="notify-email" placeholder="din@epost.no" required>
+                <button type="submit">Gi beskjed</button>
+            </form>
+            <div class="notify-msg" id="notify-msg"></div>
+        </div>
 
         <!-- Footer -->
         <footer>
@@ -330,5 +386,27 @@
         </footer>
 
     </div>
+    <script>
+        (function () {
+            var form = document.getElementById('notify-form');
+            var email = document.getElementById('notify-email');
+            var msg = document.getElementById('notify-msg');
+            var API = 'https://vaaknopp-backend.vercel.app/api/subscribe';
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var v = email.value.trim();
+                if (!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { msg.textContent = 'Skriv inn en gyldig e-postadresse.'; return; }
+                msg.textContent = 'Sender …';
+                fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: v, source: 'landing-varsling' }) })
+                .then(function (r) { return r.json(); })
+                .then(function (d) {
+                    if (d && d.ok) { msg.textContent = 'Sendt ✓ Vi gir beskjed når neste test er klar.'; email.value = ''; }
+                    else { msg.textContent = 'Noe gikk galt. Prøv igjen.'; }
+                })
+                .catch(function () { msg.textContent = 'Kunne ikke sende akkurat nå. Prøv igjen om litt.'; });
+            });
+        })();
+    </script>
 </body>
 </html>
+

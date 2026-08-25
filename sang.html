@@ -17,16 +17,16 @@
 
     <style>
         :root {
-            --bg: #eeaf63;
-            --surface: #fdf3e0;
-            --text: #3a1e07;
-            --muted: #9a6a35;
-            --accent: #c65a10;
-            --accent-glow: #d9762a;
-            --gold: #9c5c14;
-            --gold-soft: #7f4a10;
+            --bg: #D63A3A;
+            --surface: #fdf6ec;
+            --text: #3a0d0d;
+            --muted: #8a5a3a;
+            --accent: #e0a20a;
+            --accent-glow: #f0b83a;
+            --gold: #ffd166;
+            --gold-soft: #8a5c10;
             --red: #c0392b;
-            --border: #e2b87e;
+            --border: #e8c9a0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +34,7 @@
         html, body {
             width: 100%;
             min-height: 100vh;
-            background: linear-gradient(180deg, #f6cf90 0%, #edb065 100%);
+            background: linear-gradient(180deg, #D63A3A 0%, #D63A3A 60%, #b82a2a 100%);
             background-attachment: fixed;
             color: var(--text);
             font-family: Georgia, 'Times New Roman', serif;
@@ -221,7 +221,7 @@
             padding: 0.95rem 2.6rem;
             border: 2px solid var(--accent);
             background: var(--accent);
-            color: #fff3e2;
+            color: #3a0d0d;
             font-family: Georgia, serif;
             font-size: 1.05rem;
             font-weight: bold;
@@ -231,13 +231,13 @@
             transition: all 0.3s ease;
             text-align: center;
             text-decoration: none;
-            box-shadow: 0 0 24px rgba(198,90,16,0.35);
+            box-shadow: 0 0 24px rgba(224,162,10,0.35);
             width: 100%;
             max-width: 500px;
         }
         .cta-btn:hover {
             background: var(--accent-glow);
-            box-shadow: 0 0 34px rgba(217,118,42,0.5);
+            box-shadow: 0 0 34px rgba(240,184,58,0.5);
         }
         .price-note {
             font-size: 0.72rem;
@@ -267,6 +267,29 @@
             .doors { grid-template-columns: 1fr; }
             .hero h1 { font-size: 1.55rem; }
         }
+    
+        /* ── RED THEME OVERRIDES (#D63A3A) ── */
+        .wordmark { color: #fff0e0; }
+        .tagline { color: #f5d0d0; }
+        .hero h1 { color: #ffffff; }
+        .hero h1 .gold { color: #ffd166; }
+        .hero p { color: #ffe6dd; }
+        .hero p strong { color: #ffe9c9; }
+        .step .txt { color: #ffffff; }
+        .step .txt small { color: #f5d0d0; }
+        .deliverables li { color: #ffffff; }
+        .deliverables li small { color: #f5d0d0; }
+        .deliverables .note { color: #f5d0d0; }
+        .price-note { color: #f5d0d0; }
+        .toast { color: #fff3d0; }
+        footer, footer a { color: #f5d0d0; }
+        .q label span { color: #b07a10; }
+        .q input, .q textarea {
+            background: #fff8f0;
+            border: 1px solid #e0c9a8;
+            color: #3a0d0d;
+        }
+        .q input::placeholder, .q textarea::placeholder { color: #b89878; }
     </style>
 <!-- Umami analytics -->
 <script defer src="https://stats.enkelliv.no/script.js" data-website-id="37258151-cc6c-4480-9aa9-ac99ebd6272c"></script>

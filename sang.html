@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENK — en sang til deg</title>
+    <meta name="description" content="Din historie. Din drøm. Din sang. Vi gjør følelsene dine om til en ekte sang — på engelsk.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ENK — en sang til deg">
+    <meta property="og:description" content="Din historie. Din drøm. Din sang. En gave det ikke finnes to av.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://enkelliv.no/sang.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>◉</text></svg>">
+
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #141210;
+            --text: #e0ddd6;
+            --muted: #6b6660;
+            --accent: #5a7a4a;
+            --accent-glow: #6b8f56;
+            --gold: #c9a84c;
+            --gold-soft: #c4b998;
+            --red: #c0392b;
+            --border: #2a2520;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.4rem;
+        }
+
+        /* ── HEADER ── */
+        .wordmark {
+            font-size: 0.9rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+        .wordmark .symbol { color: var(--gold); }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: var(--muted);
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* ── HERO ── */
+        .hero { text-align: center; max-width: 500px; }
+        .hero h1 {
+            font-size: 1.9rem;
+            line-height: 1.3;
+            font-weight: normal;
+            color: var(--text);
+        }
+        .hero h1 .gold { color: var(--gold); }
+        .hero p {
+            margin-top: 1.1rem;
+            font-size: 1.02rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+        .hero p strong { color: var(--gold-soft); font-weight: normal; }
+
+        .hero-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--border);
+            margin: 0 auto;
+        }
+
+        /* ── STEPS ── */
+        .steps {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+        .step {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .step .num {
+            font-family: 'Courier New', monospace;
+            color: var(--gold);
+            font-size: 0.95rem;
+            min-width: 1.4rem;
+            line-height: 1.6;
+        }
+        .step .txt { font-size: 0.92rem; color: var(--text); line-height: 1.6; }
+        .step .txt small { color: var(--muted); display: block; font-size: 0.8rem; }
+
+        /* ── FORM ── */
+        .form-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 2rem 1.6rem;
+            width: 100%;
+            max-width: 500px;
+        }
+        .form-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1.4rem;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        .q { margin-bottom: 1.2rem; }
+        .q label {
+            display: block;
+            font-size: 0.88rem;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+        .q label span { color: var(--gold); font-size: 0.7rem; margin-right: 0.35rem; font-family: 'Courier New', monospace; }
+        .q small { color: var(--muted); font-size: 0.72rem; }
+        .q input, .q textarea {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.65rem 0.8rem;
+            font-family: Georgia, serif;
+            font-size: 0.9rem;
+            border-radius: 3px;
+            margin-top: 0.35rem;
+            resize: vertical;
+        }
+        .q input:focus, .q textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* ── DELIVERABLES ── */
+        .deliverables {
+            width: 100%;
+            max-width: 500px;
+        }
+        .deliverables h2 {
+            font-size: 1.05rem;
+            color: var(--gold);
+            font-weight: normal;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .deliverables ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .deliverables li {
+            font-size: 0.9rem;
+            color: var(--text);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .deliverables li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+        .deliverables li small { color: var(--muted); }
+        .deliverables .note { font-size: 0.75rem; color: var(--muted); margin-top: 1rem; text-align: center; }
+
+        /* ── DOORS ── */
+        .doors {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+            width: 100%;
+            max-width: 500px;
+        }
+        .door {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 1.1rem 1rem;
+            text-align: center;
+        }
+        .door .emoji { font-size: 1.4rem; margin-bottom: 0.3rem; }
+        .door h3 { font-size: 0.95rem; color: var(--gold-soft); font-weight: normal; margin-bottom: 0.4rem; }
+        .door p { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+
+        /* ── CTA ── */
+        .cta-btn {
+            display: inline-block;
+            padding: 0.95rem 2.6rem;
+            border: 2px solid var(--accent);
+            background: var(--accent);
+            color: var(--bg);
+            font-family: Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 0 24px rgba(90,122,74,0.35);
+            width: 100%;
+            max-width: 500px;
+        }
+        .cta-btn:hover {
+            background: var(--accent-glow);
+            box-shadow: 0 0 34px rgba(107,143,86,0.55);
+        }
+        .price-note {
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-align: center;
+            margin-top: -1.2rem;
+        }
+        .toast {
+            font-size: 0.82rem;
+            color: var(--gold-soft);
+            text-align: center;
+            min-height: 1.2em;
+            margin-top: -1rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            font-size: 0.68rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+        footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s ease; }
+        footer a:hover { border-bottom-color: var(--muted); }
+
+        @media (max-width: 420px) {
+            .doors { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.55rem; }
+        }
+    </style>
+<!-- Umami analytics -->
+<script defer src="https://stats.enkelliv.no/script.js" data-website-id="37258151-cc6c-4480-9aa9-ac99ebd6272c"></script>
+</head>
+<body>
+    <div class="container">
+
+        <header style="text-align:center;">
+            <div class="wordmark">ENK <span class="symbol">◉</span> et enkelt liv</div>
+            <div class="tagline">en personlig gave — som sang</div>
+        </header>
+
+        <div class="hero">
+            <h1>Din historie. Din drøm. <span class="gold">Din sang.</span></h1>
+            <p>Vi gjør følelsene dine om til en ekte sang — på engelsk.</p>
+            <div class="hero-divider" style="margin-top:1.4rem;"></div>
+            <p style="margin-top:1.2rem;"><strong>En gave det ikke finnes to av.</strong><br>
+            Fortell oss historien i noen få punkter, så lager vi en personlig sang med navn, øyeblikk og stemning — ferdig å gi bort.</p>
+        </div>
+
+        <div class="steps">
+            <div class="step"><span class="num">1.</span><span class="txt">Du forteller. <small>Svar på 6 små spørsmål — tar 3 minutter.</small></span></div>
+            <div class="step"><span class="num">2.</span><span class="txt">Vi skriver. <small>Dine ord og følelser blir til en engelsk sangtekst — vers + refreng, med navnet sunget i refrenget.</small></span></div>
+            <div class="step"><span class="num">3.</span><span class="txt">Du gir bort. <small>Innen 48 timer får du MP3-en, teksten og et lite kort å gi bort.</small></span></div>
+        </div>
+
+        <div class="form-block">
+            <div class="form-label">[ Fortell oss historien ]</div>
+
+            <div class="q">
+                <label for="q1"><span>01</span>Hvem er sangen til?</label>
+                <input type="text" id="q1" placeholder="Navn">
+            </div>
+            <div class="q">
+                <label for="q2"><span>02</span>Hvilken anledning?</label>
+                <input type="text" id="q2" placeholder="Bursdag, bryllup, kjærlighet, kjærlighetssorg, en drøm, et minne, «bare fordi»…">
+                <small>bursdag · bryllup · kjærlighet · kjærlighetssorg · en drøm du har drømt · et minne · «bare fordi»</small>
+            </div>
+            <div class="q">
+                <label for="q3"><span>03</span>Hva er historien?</label>
+                <textarea id="q3" rows="3" placeholder="Øyeblikket, minnet eller drømmen dere deler…"></textarea>
+            </div>
+            <div class="q">
+                <label for="q4"><span>04</span>Hvordan skal den føles?</label>
+                <input type="text" id="q4" placeholder="Glad, romantisk, melankolsk, episk, rolig…">
+            </div>
+            <div class="q">
+                <label for="q5"><span>05</span>Hvilken stil liker de?</label>
+                <input type="text" id="q5" placeholder="Pop, akustisk, ballade, elektronisk…">
+            </div>
+            <div class="q">
+                <label for="q6"><span>06</span>Noe du absolutt vil ha med?</label>
+                <input type="text" id="q6" placeholder="En setning, en inside-joke, et ord…">
+            </div>
+            <div class="q">
+                <label for="q7"><span>→</span>Din e-post <small>(for levering)</small></label>
+                <input type="email" id="q7" placeholder="din@epost.no">
+            </div>
+        </div>
+
+        <div class="deliverables">
+            <h2>Hva du får — for 199 kr</h2>
+            <ul>
+                <li>Sangen som <strong>MP3</strong> <small>— tilsendt innen 48 timer</small></li>
+                <li><strong>Selve sangteksten</strong> <small>— så den kan synges, rammes inn eller leses høyt</small></li>
+                <li><strong>Et lite kort med teksten</strong> <small>— klart til å gi bort</small></li>
+            </ul>
+            <div class="note">Alt leveres digitalt — ingenting å hente eller vente på i posten.</div>
+        </div>
+
+        <div class="doors">
+            <div class="door">
+                <div class="emoji">💭</div>
+                <h3>Drømmen</h3>
+                <p>Noen delte en drøm med deg — eller du drømte noe du vil huske. Gi den liv som sang.</p>
+            </div>
+            <div class="door">
+                <div class="emoji">❤️</div>
+                <h3>Kjærligheten</h3>
+                <p>Til den du elsker. Deres historie, deres sang.</p>
+            </div>
+            <div class="door">
+                <div class="emoji">💔</div>
+                <h3>Kjærlighetssorgen</h3>
+                <p>Til den du savner — eller for å legge noe bak deg. Sorg fortjener også en sang.</p>
+            </div>
+            <div class="door">
+                <div class="emoji">🎁</div>
+                <h3>Gaven</h3>
+                <p>Til en spesiell person som fortjener noe ingen andre har.</p>
+            </div>
+        </div>
+
+        <button class="cta-btn" id="btn-order" onclick="orderSong()">Bestill sangen din — 199 kr</button>
+        <div class="price-note">Leveres på e-post innen 48 timer</div>
+        <div class="toast" id="toast"></div>
+
+        <footer>
+            ENK — et enkelt liv<br>
+            <a href="vilkar.html">Vilkår</a> · <a href="https://enkelliv.no">enkelliv.no</a>
+        </footer>
+
+    </div>
+
+    <script>
+        // ── Bestilling ──
+        // NB (intern): Vipps-knappen er ikke koblet til 199 kr-kjøpet ennå.
+        // Backend (vaaknopp-backend) må få et «sang»-produkt (19900 øre) før denne skal kalle
+        // /api/create-payment og redirecte til Vipps. Inntil da: ærlig melding, ingen falsk trekk.
+        function orderSong() {
+            var missing = [];
+            var fields = ["q1","q2","q3","q4","q5","q6","q7"];
+            fields.forEach(function(id){
+                var el = document.getElementById(id);
+                if (!el.value || !el.value.trim()) { missing.push(id); el.style.borderColor = "var(--red)"; }
+                else { el.style.borderColor = "var(--border)"; }
+            });
+            if (missing.length > 0) {
+                showToast("Vennligst fyll ut alle feltene før du bestiller.");
+                return;
+            }
+            showToast("Takk! Betalingen aktiveres om litt — siden er under oppsett.");
+        }
+
+        function showToast(msg) {
+            var t = document.getElementById("toast");
+            t.textContent = msg;
+            clearTimeout(window.__toastTimer);
+            window.__toastTimer = setTimeout(function(){ t.textContent = ""; }, 4000);
+        }
+    </script>
+</body>
+</html>

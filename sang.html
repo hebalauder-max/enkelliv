@@ -17,16 +17,16 @@
 
     <style>
         :root {
-            --bg: #0a0a0a;
-            --surface: #141210;
-            --text: #e0ddd6;
-            --muted: #6b6660;
-            --accent: #5a7a4a;
-            --accent-glow: #6b8f56;
-            --gold: #c9a84c;
-            --gold-soft: #c4b998;
+            --bg: #eeaf63;
+            --surface: #fdf3e0;
+            --text: #3a1e07;
+            --muted: #9a6a35;
+            --accent: #c65a10;
+            --accent-glow: #d9762a;
+            --gold: #9c5c14;
+            --gold-soft: #7f4a10;
             --red: #c0392b;
-            --border: #2a2520;
+            --border: #e2b87e;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +34,8 @@
         html, body {
             width: 100%;
             min-height: 100vh;
-            background: var(--bg);
+            background: linear-gradient(180deg, #f6cf90 0%, #edb065 100%);
+            background-attachment: fixed;
             color: var(--text);
             font-family: Georgia, 'Times New Roman', serif;
             line-height: 1.7;
@@ -220,7 +221,7 @@
             padding: 0.95rem 2.6rem;
             border: 2px solid var(--accent);
             background: var(--accent);
-            color: var(--bg);
+            color: #fff3e2;
             font-family: Georgia, serif;
             font-size: 1.05rem;
             font-weight: bold;
@@ -230,13 +231,13 @@
             transition: all 0.3s ease;
             text-align: center;
             text-decoration: none;
-            box-shadow: 0 0 24px rgba(90,122,74,0.35);
+            box-shadow: 0 0 24px rgba(198,90,16,0.35);
             width: 100%;
             max-width: 500px;
         }
         .cta-btn:hover {
             background: var(--accent-glow);
-            box-shadow: 0 0 34px rgba(107,143,86,0.55);
+            box-shadow: 0 0 34px rgba(217,118,42,0.5);
         }
         .price-note {
             font-size: 0.72rem;
